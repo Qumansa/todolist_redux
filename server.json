@@ -2,15 +2,15 @@
     "todos": [
       {
         "id": 1,
-        "description": "Тест 1"
+        "description": "Get groceries"
       },
       {
         "id": 2,
-        "description": "Тест 2"
+        "description": "Do the laundry"
       },
       {
         "id": 3,
-        "description": "Тест 3"
+        "description": "Put away Christmas decorations"
       }
     ]
 }

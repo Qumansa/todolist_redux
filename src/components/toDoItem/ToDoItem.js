@@ -1,6 +1,6 @@
 import './toDoItem.sass';
 
-const toDoItem = ({description}) => {
+const ToDoItem = ({description}) => {
     return (
         <li className="to-do-list__item">
             <span className="to-do-list__description">{description}</span>
@@ -8,4 +8,4 @@ const toDoItem = ({description}) => {
     );
 };
 
-export default toDoItem;
+export default ToDoItem;

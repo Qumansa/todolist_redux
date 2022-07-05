@@ -1,22 +1,17 @@
 import { useCallback, useMemo } from 'react';
 import { useGetToDoListQuery } from '../../api/apiSlice';
 
+import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import ToDoItem from '../toDoItem/ToDoItem';
 
 import './toDoList.sass';
 
 const ToDoList = () => {
     const {
-        // data - это те самые данные, которые поступают с сервер при запросе
-        // heroes = [] - значение по умолчанию
         data: toDoList = [],
-        // означает, что запрос к серверу происходит повторно
-        // isFetching,
-        // означает, что запрос к серверу происходит впервые
         isLoading, 
-        // isSuccess,
         isError,
-        // error
     } = useGetToDoListQuery();
 
     // const filteredToDoList = useMemo(() => {
@@ -25,18 +20,27 @@ const ToDoList = () => {
     //     return filteredToDoList;
     // }, [toDoList]);
 
+    const spinner = isLoading ? <Spinner/> : null;
+    const errorMessage = isError ? <ErrorMessage/> : null;
+
     const renderToDoList = (arr) => {
         if (arr.length === 0) {
-            // return <h5 className="text-center mt-5">Героев пока нет</h5>
+            return <span>There are no tasks yet!</span>;
         }
 
-        return arr.map(({id, ...props}) => {
+        const items = arr.map(({id, ...props}) => {
             return (
                 <ToDoItem 
                     key={id} 
                     {...props}/>
             );
         });
+
+        return (
+            <ul className="to-do-list__list">
+                {items}
+            </ul>
+        );
     };
 
     const elements = renderToDoList(toDoList);
@@ -46,9 +50,9 @@ const ToDoList = () => {
             <div className="container">
                 <h2 className="sr-only">Tasks</h2>
                 <div className="to-do-list__wrapper">
-                    <ul className="to-do-list__list">
-                        {elements}
-                    </ul>
+                    {spinner}
+                    {errorMessage}
+                    {elements}
                 </div>
             </div>
         </section>

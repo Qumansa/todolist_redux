@@ -21,14 +21,14 @@ export const apiSlice = createApi({
         //     // в данном случае целью является то, чтобы после того, как герой был добавлен и данные ушли на сервер, сразу же произошло обновление этих данных на клиенте. то есть если было 3 героя, через форму добавили нового героя, на сервере стало 4 героя, на клиенте тоже должно отображаться 4 героя. фактически сразу после запроса createHero вызывается ещё один запрос getHeroes
         //     invalidatesTags: ['Heroes']
         // }),
-        // deleteHero: builder.mutation({
-        //     query: id => ({
-        //         url: `/heroes/${id}`,
-        //         method: 'DELETE'
-        //     }),
-        //     invalidatesTags: ['Heroes']
-        // })
+        deleteToDoItem: builder.mutation({
+            query: (id) => ({
+                url: `/todos/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['Todos']
+        })
     })
 });
 
-export const {useGetToDoListQuery} = apiSlice;
+export const {useGetToDoListQuery, useDeleteToDoItemMutation} = apiSlice;

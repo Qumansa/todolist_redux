@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react';
-import { useGetToDoListQuery } from '../../api/apiSlice';
+import { useGetToDoListQuery, useDeleteToDoItemMutation } from '../../api/apiSlice';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -11,18 +11,21 @@ const ToDoList = () => {
     const {
         data: toDoList = [],
         isFetching,
-        isLoading, 
         isError,
     } = useGetToDoListQuery();
+
+    const [deleteToDoItem] = useDeleteToDoItemMutation();
+
+    const onDeleteToDoItem = useCallback((id) => {
+        deleteToDoItem(id);
+        // eslint-disable-next-line
+    }, []);
 
     // const filteredToDoList = useMemo(() => {
     //     const filteredToDoList = [...toDoList];
 
     //     return filteredToDoList;
     // }, [toDoList]);
-
-    const spinner = isLoading ? <Spinner/> : null;
-    const errorMessage = isError ? <ErrorMessage/> : null;
 
     const renderToDoList = (arr) => {
         if (arr.length === 0 && !isFetching) {
@@ -33,7 +36,8 @@ const ToDoList = () => {
             return (
                 <ToDoItem 
                     key={id} 
-                    {...props}/>
+                    {...props}
+                    onDelete={() => onDeleteToDoItem(id)}/>
             );
         });
 
@@ -46,14 +50,18 @@ const ToDoList = () => {
 
     const elements = renderToDoList(toDoList);
 
+    const view = isError 
+        ? <ErrorMessage/> 
+        : isFetching 
+        ? <Spinner/> 
+        : elements;
+
     return (
         <section className="to-do-list section">
             <div className="container">
                 <h2 className="sr-only">Tasks</h2>
                 <div className="to-do-list__wrapper">
-                    {spinner}
-                    {errorMessage}
-                    {elements}
+                    {view}
                 </div>
             </div>
         </section>

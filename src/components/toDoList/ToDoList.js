@@ -10,6 +10,7 @@ import './toDoList.sass';
 const ToDoList = () => {
     const {
         data: toDoList = [],
+        isFetching,
         isLoading, 
         isError,
     } = useGetToDoListQuery();
@@ -24,7 +25,7 @@ const ToDoList = () => {
     const errorMessage = isError ? <ErrorMessage/> : null;
 
     const renderToDoList = (arr) => {
-        if (arr.length === 0) {
+        if (arr.length === 0 && !isFetching) {
             return <span>There are no tasks yet!</span>;
         }
 

@@ -1,0 +1,18 @@
+@import '../../style/_variables'
+    
+.to-do-list
+    &__wrapper  
+        padding: 50px 30px 30px
+        background-color: $eggshell
+        border-radius: 20px
+        box-shadow: 5px 5px 13px 0 rgba(0, 0, 0, 0.5)
+    &__item
+        padding-bottom: 15px
+        &:not(:first-child)
+            padding-top: 15px
+            border-top: 1px solid $littleBoyBlue
+    &__task
+        font-weight: 500
+        font-size: 24px
+        line-height: 36px
+    

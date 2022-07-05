@@ -1,7 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-// export const store = configureStore({
-//     reducer: {
-//       	counter: counterReducer,
-//     },
-// });
+import { apiSlice } from '../api/apiSlice';
+
+const store = configureStore({
+    reducer: {
+        [apiSlice.reducerPath]: apiSlice.reducer
+    },
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(apiSlice.middleware),
+    devTools: process.env.NODE_ENV !== 'production', 
+});
+
+export default store;

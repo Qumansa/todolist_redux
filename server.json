@@ -1,0 +1,16 @@
+{
+    "todos": [
+      {
+        "id": 1,
+        "description": "Тест 1"
+      },
+      {
+        "id": 2,
+        "description": "Тест 2"
+      },
+      {
+        "id": 3,
+        "description": "Тест 3"
+      }
+    ]
+}

@@ -57,14 +57,9 @@ const ToDoList = () => {
         : elements;
 
     return (
-        <section className="to-do-list section">
-            <div className="container">
-                <h2 className="sr-only">Tasks</h2>
-                <div className="to-do-list__wrapper">
-                    {view}
-                </div>
-            </div>
-        </section>
+        <>
+            {view}
+        </>
     );
 };
 

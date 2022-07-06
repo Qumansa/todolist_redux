@@ -1,9 +1,9 @@
 import './toDoItem.sass';
 
-const ToDoItem = ({description, onDelete}) => {
+const ToDoItem = ({description, onDelete, index}) => {
     return (
         <li className="to-do-list__item">
-            <span className="to-do-list__description">{description}</span>
+            <span className="to-do-list__description">{index + 1}) {description}</span>
             <button 
                 className="to-do-list__button" 
                 aria-label="Delete"

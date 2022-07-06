@@ -32,14 +32,13 @@ const ToDoList = () => {
             return <span>There are no tasks yet!</span>;
         }
 
-        const items = arr.map(({id, ...props}) => {
-            return (
-                <ToDoItem 
-                    key={id} 
-                    {...props}
-                    onDelete={() => onDeleteToDoItem(id)}/>
-            );
-        });
+        const items = arr.map(({id, ...props}, index) => (
+            <ToDoItem 
+                key={id} 
+                index={index}
+                {...props}
+                onDelete={() => onDeleteToDoItem(id)}/>
+        ));
 
         return (
             <ul className="to-do-list__list">

@@ -18,6 +18,18 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ['Todos']
         }),
+        toggleFavouriteToDoItem: builder.mutation({
+            query(data) {
+                const { id } = data;
+                
+                return {
+                    url: `/todos/${id}`,
+                    method: 'PATCH',
+                    body: data
+                }
+            },
+            invalidatesTags: ['Todos']
+        }),
         deleteToDoItem: builder.mutation({
             query: (id) => ({
                 url: `/todos/${id}`,
@@ -28,4 +40,9 @@ export const apiSlice = createApi({
     })
 });
 
-export const {useGetToDoListQuery, useDeleteToDoItemMutation, useCreateToDoItemMutation} = apiSlice;
+export const {
+    useGetToDoListQuery, 
+    useDeleteToDoItemMutation, 
+    useCreateToDoItemMutation, 
+    useToggleFavouriteToDoItemMutation
+} = apiSlice;

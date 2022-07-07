@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react';
-import { useGetToDoListQuery, useDeleteToDoItemMutation } from '../../api/apiSlice';
+import { useGetToDoListQuery, useDeleteToDoItemMutation, useToggleFavouriteToDoItemMutation } from '../../api/apiSlice';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -10,14 +10,25 @@ import './toDoList.sass';
 const ToDoList = () => {
     const {
         data: toDoList = [],
-        isFetching,
+        isLoading,
         isError,
     } = useGetToDoListQuery();
 
     const [deleteToDoItem] = useDeleteToDoItemMutation();
+    const [toggleFavouriteToDoItem] = useToggleFavouriteToDoItemMutation();
 
     const onDeleteToDoItem = useCallback((id) => {
         deleteToDoItem(id);
+        // eslint-disable-next-line
+    }, []);
+
+    const onToggleFavouriteToDoItem = useCallback((id, favourite) => {
+        const data = {
+            id,
+            favourite: !favourite
+        };
+
+        toggleFavouriteToDoItem(data);
         // eslint-disable-next-line
     }, []);
 
@@ -28,16 +39,18 @@ const ToDoList = () => {
     // }, [toDoList]);
 
     const renderToDoList = (arr) => {
-        if (arr.length === 0 && !isFetching) {
+        if (arr.length === 0) {
             return <span>There are no tasks yet!</span>;
         }
 
-        const items = arr.map(({id, ...props}, index) => (
+        const items = arr.map(({id, favourite, ...props}, index) => (
             <ToDoItem 
                 key={id} 
                 index={index}
+                favourite={favourite}
                 {...props}
-                onDelete={() => onDeleteToDoItem(id)}/>
+                onDelete={() => onDeleteToDoItem(id)}
+                onToggle={() => onToggleFavouriteToDoItem(id, favourite)}/>
         ));
 
         return (
@@ -50,9 +63,9 @@ const ToDoList = () => {
     const elements = renderToDoList(toDoList);
 
     const view = isError 
-        ? <ErrorMessage/> 
-        : isFetching 
-        ? <Spinner/> 
+        ? <ErrorMessage/>
+        : isLoading 
+        ? <Spinner/>
         : elements;
 
     return (

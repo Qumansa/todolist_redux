@@ -15,7 +15,8 @@ const Form = () => {
 
         const newToDoItem = {
             id: uuidv4(),
-            description: task
+            description: task, 
+            favourite: false
         };
 
         createToDoItem(newToDoItem).unwrap();

@@ -2,23 +2,28 @@
   "todos": [
     {
       "id": 1,
-      "description": "Get groceries"
+      "description": "Get groceries",
+      "favourite": true
     },
     {
       "id": 2,
-      "description": "Do the laundry"
+      "description": "Get groceries",
+      "favourite": false
     },
     {
       "id": 3,
-      "description": "Put away Christmas decorations"
+      "description": "Put away Christmas decorations",
+      "favourite": true
     },
     {
-      "id": 4,
-      "description": "Put away Christmas decorations"
+      "id": "26b541d3-4b4b-4f23-bd24-9e59a5326c0d",
+      "description": "111111111",
+      "favourite": false
     },
     {
-      "id": 6,
-      "description": "Put away Christmas decorations"
+      "id": "2818d603-0c01-43fe-8096-b4682936a52f",
+      "description": "1111111111111",
+      "favourite": false
     }
   ]
 }

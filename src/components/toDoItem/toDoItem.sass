@@ -11,6 +11,10 @@
             border-top: 1px solid $littleBoyBlue
     &__description
         word-break: break-all
+    &__buttons
+        display: flex
+        column-gap: 30px
+        height: 30px
     &__button
         width: 30px
         height: 30px
@@ -21,6 +25,13 @@
                 transform: scale(1.1)
             &:active
                 opacity: 0.5
+        &_active
+            .to-do-list__button-img_favourite path
+                fill: $lightSteelBlue
         &-img
             width: 30px
             height: 30px
+            &_favourite
+                stroke: #000
+                path
+                    fill: $eggshell

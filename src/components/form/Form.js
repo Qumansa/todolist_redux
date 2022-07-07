@@ -36,7 +36,7 @@ const Form = () => {
                 placeholder="Type in a new task"
                 onChange={(e) => setTask(e.target.value)}/>
             <button 
-                className="form__submit" 
+                className="button button_light-steel-blue" 
                 type="submit">
                 Add
             </button>

@@ -1,11 +1,9 @@
 import './toDoItem.sass';
 
 const ToDoItem = ({index, onDelete, onToggle, description, favourite}) => {
-    let btnClassNames = "to-do-list__button";
+    
 
-    if (favourite) {
-        btnClassNames += " to-do-list__button_active";
-    }
+    const btnActiveClass = favourite ? 'to-do-list__button_active' : null;
 
     return (
         <li className="to-do-list__item">
@@ -13,7 +11,7 @@ const ToDoItem = ({index, onDelete, onToggle, description, favourite}) => {
             <ul className="to-do-list__buttons">
                 <li className="to-do-list__buttons-item">
                     <button
-                        className={btnClassNames}
+                        className={`to-do-list__button ${btnActiveClass}`}
                         aria-label="Favourite"
                         onClick={onToggle}>
                         <svg className="to-do-list__button-img to-do-list__button-img_favourite" viewBox="-1 0 18 15" fill="white" xmlns="http://www.w3.org/2000/svg">

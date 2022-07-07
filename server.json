@@ -3,7 +3,7 @@
     {
       "id": 1,
       "description": "Get groceries",
-      "favourite": true
+      "favourite": false
     },
     {
       "id": 2,
@@ -13,17 +13,22 @@
     {
       "id": 3,
       "description": "Put away Christmas decorations",
-      "favourite": true
+      "favourite": false
     },
     {
       "id": "26b541d3-4b4b-4f23-bd24-9e59a5326c0d",
       "description": "111111111",
-      "favourite": false
+      "favourite": true
+    }
+  ],
+  "filters": [
+    {
+      "id": "all",
+      "name": "all"
     },
     {
-      "id": "2818d603-0c01-43fe-8096-b4682936a52f",
-      "description": "1111111111111",
-      "favourite": false
+      "id": "favourite",
+      "name": "favourite"
     }
   ]
 }

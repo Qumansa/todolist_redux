@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react';
-import { useGetToDoListQuery, useDeleteToDoItemMutation, useToggleFavouriteToDoItemMutation } from '../../api/apiSlice';
+import { useGetToDoListQuery, useDeleteToDoItemMutation, useToggleFavouriteToDoItemMutation } from '../../api/todosApi';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';

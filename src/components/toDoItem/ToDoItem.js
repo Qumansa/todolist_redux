@@ -1,8 +1,6 @@
 import './toDoItem.sass';
 
 const ToDoItem = ({index, onDelete, onToggle, description, favourite}) => {
-    
-
     const btnActiveClass = favourite ? 'to-do-list__button_active' : null;
 
     return (

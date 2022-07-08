@@ -1,6 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
-export const apiSlice = createApi({
+export const todosApi = createApi({
+    reducerPath: 'todosApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:3001'
     }),
@@ -45,4 +46,4 @@ export const {
     useDeleteToDoItemMutation, 
     useCreateToDoItemMutation, 
     useToggleFavouriteToDoItemMutation
-} = apiSlice;
+} = todosApi;

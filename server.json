@@ -23,12 +23,14 @@
   ],
   "filters": [
     {
-      "id": "all",
-      "name": "all"
+      "id": "All",
+      "name": "All",
+      "active": true
     },
     {
-      "id": "favourite",
-      "name": "favourite"
+      "id": "Favourite",
+      "name": "Favourite",
+      "active": false
     }
   ]
 }

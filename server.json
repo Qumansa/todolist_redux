@@ -20,17 +20,5 @@
       "description": "111111111",
       "favourite": true
     }
-  ],
-  "filters": [
-    {
-      "id": "All",
-      "name": "All",
-      "active": true
-    },
-    {
-      "id": "Favourite",
-      "name": "Favourite",
-      "active": false
-    }
   ]
 }

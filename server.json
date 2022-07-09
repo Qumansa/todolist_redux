@@ -7,17 +7,12 @@
     },
     {
       "id": 2,
-      "description": "Get groceries",
+      "description": "Do the laundry",
       "favourite": false
     },
     {
       "id": 3,
       "description": "Put away Christmas decorations",
-      "favourite": false
-    },
-    {
-      "id": "26b541d3-4b4b-4f23-bd24-9e59a5326c0d",
-      "description": "111111111",
       "favourite": true
     }
   ]

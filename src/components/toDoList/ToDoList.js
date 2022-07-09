@@ -1,5 +1,6 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { useGetToDoListQuery, useDeleteToDoItemMutation, useToggleFavouriteToDoItemMutation } from '../../api/todosApi';
+import { useSelector } from 'react-redux';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -13,6 +14,21 @@ const ToDoList = () => {
         isLoading,
         isError,
     } = useGetToDoListQuery();
+
+    const {activeFilter} = useSelector(state => state.filter);
+
+    const filterToDoList = () => {
+        switch(activeFilter) {
+            case 'All': 
+                return toDoList;
+            case 'Favourite':
+                return toDoList.filter(filter => filter.favourite);
+            default:
+                return toDoList;
+        }
+    };
+
+    const filteredToDoList = filterToDoList(toDoList);
 
     const [deleteToDoItem] = useDeleteToDoItemMutation();
     const [toggleFavouriteToDoItem] = useToggleFavouriteToDoItemMutation();
@@ -31,12 +47,6 @@ const ToDoList = () => {
         toggleFavouriteToDoItem(data);
         // eslint-disable-next-line
     }, []);
-
-    // const filteredToDoList = useMemo(() => {
-    //     const filteredToDoList = [...toDoList];
-
-    //     return filteredToDoList;
-    // }, [toDoList]);
 
     const renderToDoList = (arr) => {
         if (arr.length === 0) {
@@ -60,7 +70,7 @@ const ToDoList = () => {
         );
     };
 
-    const elements = renderToDoList(toDoList);
+    const elements = renderToDoList(filteredToDoList);
 
     const view = isError 
         ? <ErrorMessage/>

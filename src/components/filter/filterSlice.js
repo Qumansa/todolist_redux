@@ -24,8 +24,6 @@ const {actions, reducer} = filterSlice;
 
 export default reducer;
 
-// export const {selectAll} = filterAdapter.getSelectors(state => state.filters);
-
 export const {
     filterChanged,
 } = actions;

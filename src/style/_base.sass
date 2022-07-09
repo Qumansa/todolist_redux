@@ -1,5 +1,8 @@
 @import './_variables'
 @import './_fonts'
+
+html
+    box-sizing: border-box
     
 *, ::after, ::before 
     box-sizing: inherit
@@ -78,17 +81,10 @@ button
 
 .section
     padding: 30px 0
-    // &__title
-    //     font-size: 32px
-    //     line-height: 46px
-    //     font-weight: bold
-
-// .last-section
-//     padding-bottom: 50px
 
 .button
     padding: 5px 15px
-    min-width: 100px
+    min-width: 130px
     border-radius: 5px
     transition: transform 0.2s, background-color 0.2s
     will-change: transform, background-color
@@ -105,6 +101,22 @@ button
                 background-color: $littleBoyBlue
         &_active
             background-color: $littleBoyBlue
+
+.input
+    padding: 5px 15px
+    width: 100%
+    background-color: $mediumChampagne
+    outline-color: $deepSpaceSparkle
+    border-top: none
+    border-left: none
+    border-right: none
+    border-bottom: none
+    border-radius: 5px
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2)
+    &::placeholder
+        font-style: italic
+        color: $deepSpaceSparkle
+        opacity: 0.7
           
 
 

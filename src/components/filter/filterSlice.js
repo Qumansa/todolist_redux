@@ -5,7 +5,9 @@ const filterAdapter = createEntityAdapter();
 const initialState = filterAdapter.getInitialState({
     filters: [
         {name: 'All'},
-        {name: 'Favourite'}
+        {name: 'Favourite'},
+        {name: 'A...z'},
+        {name: 'Z...a'},
     ],
     activeFilter: 'All'
 });

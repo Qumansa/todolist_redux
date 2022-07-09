@@ -1,6 +1,7 @@
 import Header from '../header/Header';
 import Form from '../form/Form';
 import Filter from '../filter/Filter';
+import Search from '../search/Search';
 import ToDoList from '../toDoList/ToDoList';
 
 import '../../style/_base.sass';
@@ -16,6 +17,7 @@ const App = () => {
 						<div className="to-do-list__wrapper">
 							<Form/>
 							<Filter/>
+							<Search/>
 							<ToDoList/>
 						</div>
 					</div>

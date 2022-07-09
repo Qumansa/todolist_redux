@@ -23,6 +23,14 @@ const ToDoList = () => {
                 return toDoList;
             case 'Favourite':
                 return toDoList.filter(filter => filter.favourite);
+            case 'A...z':
+                return [...toDoList].sort((a, b) => {
+                    return a.description.toLowerCase() < b.description.toLowerCase() ? -1 : 1;
+                });
+            case 'Z...a':
+                return [...toDoList].sort((a, b) => {
+                    return a.description.toLowerCase() > b.description.toLowerCase() ? -1 : 1;
+                });
             default:
                 return toDoList;
         }

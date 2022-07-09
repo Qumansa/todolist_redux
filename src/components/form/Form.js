@@ -29,7 +29,7 @@ const Form = () => {
             className="form"
             onSubmit={onSubmitHandler}>
             <input 
-                className="form__input"
+                className="input"
                 type="text" 
                 name="task-name"
                 value={task}

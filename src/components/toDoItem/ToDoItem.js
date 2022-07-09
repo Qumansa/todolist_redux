@@ -6,6 +6,7 @@ const ToDoItem = ({index, onDelete, onToggle, description, favourite}) => {
     return (
         <li className="to-do-list__item">
             <span className="to-do-list__description">{index + 1}) {description}</span>
+            {/* <input type="text" className="input" /> */}
             <ul className="to-do-list__buttons">
                 <li className="to-do-list__buttons-item">
                     <button

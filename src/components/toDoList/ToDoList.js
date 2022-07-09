@@ -15,9 +15,23 @@ const ToDoList = () => {
         isError,
     } = useGetToDoListQuery();
 
+    const {searchValue} = useSelector(state => state.search);
     const {activeFilter} = useSelector(state => state.filter);
 
-    const filterToDoList = () => {
+    const [deleteToDoItem] = useDeleteToDoItemMutation();
+    const [toggleFavouriteToDoItem] = useToggleFavouriteToDoItemMutation();
+
+    const searchTask = (tasks, searchValue) => {
+        if (searchValue.length === 0) {
+			return tasks;
+		}
+
+        return tasks.filter((task) => {
+			return task.description.toLowerCase().includes(searchValue.trim().toLowerCase());
+		});
+    };
+
+    const filterToDoList = (toDoList) => {
         switch(activeFilter) {
             case 'All': 
                 return toDoList;
@@ -36,11 +50,6 @@ const ToDoList = () => {
         }
     };
 
-    const filteredToDoList = filterToDoList(toDoList);
-
-    const [deleteToDoItem] = useDeleteToDoItemMutation();
-    const [toggleFavouriteToDoItem] = useToggleFavouriteToDoItemMutation();
-
     const onDeleteToDoItem = useCallback((id) => {
         deleteToDoItem(id);
         // eslint-disable-next-line
@@ -56,12 +65,12 @@ const ToDoList = () => {
         // eslint-disable-next-line
     }, []);
 
-    const renderToDoList = (arr) => {
-        if (arr.length === 0) {
+    const renderToDoList = (tasks) => {
+        if (tasks.length === 0) {
             return <span>There are no tasks yet!</span>;
         }
 
-        const items = arr.map(({id, favourite, ...props}, index) => (
+        const items = tasks.map(({id, favourite, ...props}, index) => (
             <ToDoItem 
                 key={id} 
                 index={index}
@@ -77,6 +86,8 @@ const ToDoList = () => {
             </ul>
         );
     };
+
+    const filteredToDoList = filterToDoList(searchTask(toDoList, searchValue));
 
     const elements = renderToDoList(filteredToDoList);
 

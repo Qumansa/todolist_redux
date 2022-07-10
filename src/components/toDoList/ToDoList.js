@@ -1,9 +1,4 @@
-import { useCallback } from 'react';
-import { 
-    useGetToDoListQuery, 
-    useDeleteToDoItemMutation, 
-    useUpdateToDoItemMutation
-} from '../../api/todosApi';
+import { useGetToDoListQuery } from '../../api/todosApi';
 import { useSelector } from 'react-redux';
 
 import Spinner from '../spinner/Spinner';
@@ -21,9 +16,6 @@ const ToDoList = () => {
 
     const {searchValue} = useSelector(state => state.search);
     const {activeFilter} = useSelector(state => state.filter);
-
-    const [deleteToDoItem] = useDeleteToDoItemMutation();
-    const [updateToDoItem] = useUpdateToDoItemMutation();
 
     const searchTask = (tasks, searchValue) => {
         if (searchValue.length === 0) {
@@ -54,37 +46,17 @@ const ToDoList = () => {
         }
     };
 
-    // console.log('render ToDoList')
-
-    const onDeleteToDoItem = useCallback((id) => {
-        deleteToDoItem(id);
-        // eslint-disable-next-line
-    }, []);
-
-    const onToggleFavouriteToDoItem = useCallback((id, favourite) => {
-        const data = {
-            id,
-            favourite: !favourite
-        };
-
-        updateToDoItem(data);
-        // eslint-disable-next-line
-    }, []);
-
     const renderToDoList = (tasks) => {
         if (tasks.length === 0) {
             return <span>There are no tasks yet!</span>;
         }
 
-        const items = tasks.map(({id, favourite, ...props}, index) => (
+        const items = tasks.map(({id, ...props}, index) => (
             <ToDoItem 
                 key={id} 
                 id={id}
                 index={index}
-                favourite={favourite}
-                {...props}
-                onDelete={() => onDeleteToDoItem(id)}
-                onToggle={() => onToggleFavouriteToDoItem(id, favourite)}/>
+                {...props}/>
         ));
 
         return (

@@ -19,7 +19,7 @@ export const todosApi = createApi({
             }),
             invalidatesTags: ['Todos']
         }),
-        toggleFavouriteToDoItem: builder.mutation({
+        updateToDoItem: builder.mutation({
             query(data) {
                 const { id } = data;
                 
@@ -45,5 +45,5 @@ export const {
     useGetToDoListQuery, 
     useDeleteToDoItemMutation, 
     useCreateToDoItemMutation, 
-    useToggleFavouriteToDoItemMutation
+    useUpdateToDoItemMutation
 } = todosApi;

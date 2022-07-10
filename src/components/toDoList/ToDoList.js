@@ -1,5 +1,9 @@
 import { useCallback } from 'react';
-import { useGetToDoListQuery, useDeleteToDoItemMutation, useToggleFavouriteToDoItemMutation } from '../../api/todosApi';
+import { 
+    useGetToDoListQuery, 
+    useDeleteToDoItemMutation, 
+    useUpdateToDoItemMutation
+} from '../../api/todosApi';
 import { useSelector } from 'react-redux';
 
 import Spinner from '../spinner/Spinner';
@@ -19,7 +23,7 @@ const ToDoList = () => {
     const {activeFilter} = useSelector(state => state.filter);
 
     const [deleteToDoItem] = useDeleteToDoItemMutation();
-    const [toggleFavouriteToDoItem] = useToggleFavouriteToDoItemMutation();
+    const [updateToDoItem] = useUpdateToDoItemMutation();
 
     const searchTask = (tasks, searchValue) => {
         if (searchValue.length === 0) {
@@ -50,6 +54,8 @@ const ToDoList = () => {
         }
     };
 
+    // console.log('render ToDoList')
+
     const onDeleteToDoItem = useCallback((id) => {
         deleteToDoItem(id);
         // eslint-disable-next-line
@@ -61,7 +67,7 @@ const ToDoList = () => {
             favourite: !favourite
         };
 
-        toggleFavouriteToDoItem(data);
+        updateToDoItem(data);
         // eslint-disable-next-line
     }, []);
 
@@ -73,6 +79,7 @@ const ToDoList = () => {
         const items = tasks.map(({id, favourite, ...props}, index) => (
             <ToDoItem 
                 key={id} 
+                id={id}
                 index={index}
                 favourite={favourite}
                 {...props}

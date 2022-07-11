@@ -50,7 +50,11 @@ const ToDoItem = ({id, index, description, favourite}) => {
     };
 
     const descriptionElem = (
-        <span className="to-do-list__description">{description}</span>
+        <span 
+            className="to-do-list__description"
+            onDoubleClick={() => onEdit()}>
+            {description}
+        </span>
     );
 
     const inputElem = (

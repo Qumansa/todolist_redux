@@ -13,7 +13,7 @@
     {
       "id": 3,
       "description": "Put away Christmas decorations",
-      "favourite": true
+      "favourite": false
     }
   ]
 }
